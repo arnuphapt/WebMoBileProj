@@ -1,8 +1,0 @@
-{
-  "compilerOptions": {
-    "paths": {
-      "@/*": ["WebMoBileProj/src/*"]
-    }
-  },
-  "exclude": ["node_modules", "dist"]
-}
