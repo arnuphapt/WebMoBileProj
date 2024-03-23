@@ -44,13 +44,15 @@
 
                 <div  class="pa-2">
                     รหัสวิชา : SC310006 Mobile and Web Application Development<br>
-                    <br><img src="bg2.png" width="600" height="300" class="image-container">
+                    <br><img src="bg2.jpg" width="600" height="300" class="image-container">
                 </div>
 
 
 
                 <v-card-actions>
+
                     <v-btn @click="google_login()" v-if="!user" class="btn btn-warning"> Login</v-btn>
+                    
                     <div v-if="user">
                       <v-btn @click="google_logout()" v-if="user" class="btn btn-danger"> Logout</v-btn>   
                       <div v-for="(s) in students">
@@ -60,8 +62,9 @@
                         <v-btn v-if="user.email == t.email"><a href="teachers.html" class="btn btn-primary">Next for Teachers</a></v-btn>
                       </div>   
                     </div>
-                         
+
                 </v-card-actions>
+
             </v-card>
             <v-card v-if="editmode">
                 <v-card-text class="pa-6">
