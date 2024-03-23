@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Work6</title>
+    <title>Login page</title>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
@@ -21,15 +21,48 @@
             margin-left: 280px;
             border-radius: 5%;
         }
+
+        .body2{
+            background-repeat: no-repeat;
+            background-image: url(bg1.jpg);
+        }
+
+        .theader{
+          margin: auto;
+          text-align: center;
+        }
+
+        .theader1{
+          margin-left: 10%;
+        }
+        
         
     </style>
 </head>
   <body>
+
+    <nav class="navbar navbar-expand-lg bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand theader1" href="project.html">
+          <img src="Cp1.png" alt="Logo" width="140" height="40" class="d-inline-block align-text-top">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active text-white fw-bold fs-5" aria-current="page" href="project.html">หน้าแรก</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+
     <div id="app">
       <v-app>
         <v-container>
             <v-card>
-                <v-card-title class="bg-blue-grey">{{title}}</v-card-title>
+                <v-card-title class="bg-body-secondary theader">{{title}}</v-card-title>
                   <v-card-actions >
                     <template v-if="user">
                       <div class="pa-2">
@@ -38,50 +71,30 @@
                       <div class="pa-2">
                           {{user.displayName}}<br />
                           {{user.email}}<br/>
+                          <v-btn @click="google_logout()" v-if="user" class="btn btn-danger"> Logout</v-btn> 
                       </div>
                   </template>
                 </v-card-actions>
 
                 <div  class="pa-2">
-                    รหัสวิชา : SC310006 Mobile and Web Application Development<br>
+                    
                     <br><img src="bg2.jpg" width="600" height="300" class="image-container">
                 </div>
 
 
 
                 <v-card-actions>
-
-                    <v-btn @click="google_login()" v-if="!user" class="btn btn-warning"> Login</v-btn>
-                    
+                    <v-btn @click="google_login()" v-if="!user" class="btn btn-warning theader"> Login</v-btn>
                     <div v-if="user">
-                      <v-btn @click="google_logout()" v-if="user" class="btn btn-danger"> Logout</v-btn>   
                       <div v-for="(s) in students">
-                        <v-btn v-if="user.email == s.email"><a href="students.html" class="btn btn-success">Next for students</a></v-btn>
+                        <v-btn v-if="user.email == s.email"><a href="students.html" class="btn btn-outline-success">Mobile and Web Application Development</a></v-btn>
                       </div> 
                       <div v-for="(t) in teachers">
-                        <v-btn v-if="user.email == t.email"><a href="teachers.html" class="btn btn-primary">Next for Teachers</a></v-btn>
+                        <v-btn v-if="user.email == t.email"><a href="teachers.html" class="btn btn-outline-primary">Mobile and Web Application Development</a></v-btn>
                       </div>   
                     </div>
-
                 </v-card-actions>
-
             </v-card>
-            <v-card v-if="editmode">
-                <v-card-text class="pa-6">
-                    <v-card-title class="bg-blue-grey">{{editmode}}</v-card-title>
-                    <v-text-field v-model="editstd.id" label="รหัส"></v-text-field>
-                    <v-combobox v-model="editstd.title" label="คำนำหน้า" :items="['นาย','นางสาว','ด.ช.','ด.ญ','นาง']"></v-combobox>
-                    <v-text-field v-model="editstd.fname" label="ชื่อ"></v-text-field>
-                    <v-text-field v-model="editstd.lname" label="นามสกุล"></v-text-field>
-                    <v-text-field v-model="editstd.email" label="E-mail"></v-text-field>
-                    <v-text-field v-model="editstd.section" label="Section"></v-text-field>
-               </v-card-text>
-               <v-card-actions>
-
-                    <v-btn @click="savedata()">Save</v-btn>
-                    <v-btn @click="editmode=0">Cancel</v-btn>
-               </v-card-actions>
-             </v-card>
                       
           <div class="pa-6 text-center">{{footer}}</div>
         </v-container>        
@@ -129,14 +142,14 @@
     <script>
       const vuetify = Vuetify.createVuetify();
       const firebaseConfig = {
-          apiKey: "AIzaSyAxMb9bGFJ7LdpjPTvM5Edt5fC7bYKnLsA",
-          authDomain: "project-59fcb.firebaseapp.com",
-          projectId: "project-59fcb",
-          storageBucket: "project-59fcb.appspot.com",
-          messagingSenderId: "122452811663",
-          appId: "1:122452811663:web:a2ba5676301f047e0975fa",
-          measurementId: "G-TBVG4PVFFX"
-        };
+  apiKey: "AIzaSyAxMb9bGFJ7LdpjPTvM5Edt5fC7bYKnLsA",
+  authDomain: "project-59fcb.firebaseapp.com",
+  projectId: "project-59fcb",
+  storageBucket: "project-59fcb.appspot.com",
+  messagingSenderId: "122452811663",
+  appId: "1:122452811663:web:a2ba5676301f047e0975fa",
+  measurementId: "G-TBVG4PVFFX"
+};
         firebase.initializeApp(firebaseConfig);      
         const db = firebase.firestore();
 
@@ -144,7 +157,7 @@
         data() {
           return {
             title: "Web/Mobile  Application : เช็คชื่อนักศึกษา และ ถาม/ตอบ",
-            footer: "สมาชี๊ก ",
+            footer: "กรุณา Login ด้วยนะครับบ ",
             students: [],
             editstd: {},
             editmode: 0,
