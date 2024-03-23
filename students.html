@@ -52,9 +52,6 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link active text-white fw-bold fs-5" aria-current="page" href="project.html">หน้าแรก</a>
-        </div>
       </div>
     </div>
   </nav>
@@ -71,7 +68,6 @@
                           </div>
                           <div class="pa-2">
                               {{user.displayName}}<br />
-                              {{user.email}}<br/>
                               <div v-if="user">
                                 <v-btn @click="google_logout()" v-if="user" class="btn btn-danger"> Logout</v-btn>   
                               </div>
@@ -79,8 +75,8 @@
                       </template>
                     </v-card-actions>
 
-                    <div v-for="(q) in quiz" class="pa-2"> 
-                      <h2 class="fs-5"> {{ q.quiz_name }} <v-btn @click="sendob(q.id)" class="btn btn-outline-primary ">เช็คชื่อ</v-btn></h2>
+                    <div v-for="(q) in quiz" class="pa-2" style="text-align: center;"> 
+                      <h2 class="fs-5"> {{ q.quiz_name }} </h2><v-btn @click="sendob(q.id)" class="btn btn-outline-primary ">เช็คชื่อ</v-btn>
                   </div>
                   
                     <v-card v-if="editmode==='แบบฟอร์ม'">
@@ -138,8 +134,8 @@
         const app = Vue.createApp({
           data() {
             return {
-              title: "Web/Mobile  Application : เช็คชื่อนักศึกษา และ ถาม/ตอบ",
-              footer: "SC310006 Mobile and Web Application Development ",
+              title: "หน้าเช็คชื่อ",
+              footer: "เช็คชื่อด้วยนะครับ ",
               students: [],
               editstd: {},
               editquiz: {},

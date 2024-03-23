@@ -50,11 +50,10 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-link active text-white fw-bold fs-5" aria-current="page" href="project.html">หน้าแรก</a>
-          </div>
         </div>
+
       </div>
+      
     </nav>
     
 
@@ -70,7 +69,6 @@
                       </div>
                       <div class="pa-2">
                           {{user.displayName}}<br />
-                          {{user.email}}<br/>
                           <v-btn @click="google_logout()" v-if="user" class="btn btn-danger"> Logout</v-btn> 
                       </div>
                   </template>
@@ -84,13 +82,13 @@
 
 
                 <v-card-actions>
-                    <v-btn @click="google_login()" v-if="!user" class="btn btn-warning theader"> Login</v-btn>
+                    <v-btn @click="google_login()" v-if="!user" class="btn btn-success theader"> Login</v-btn>
                     <div v-if="user">
                       <div v-for="(s) in students">
-                        <v-btn v-if="user.email == s.email"><a href="students.html" class="btn btn-outline-success">Mobile and Web Application Development</a></v-btn>
+                        <v-btn v-if="user.email == s.email"><a href="students.html" class="btn btn-outline-success ">ไปหน้าถัดไป</a></v-btn>
                       </div> 
                       <div v-for="(t) in teachers">
-                        <v-btn v-if="user.email == t.email"><a href="teachers.html" class="btn btn-outline-primary">Mobile and Web Application Development</a></v-btn>
+                        <v-btn v-if="user.email == s.email"><a href="students.html" class="btn btn-outline-success ">กฟไกไฟกฟก</a></v-btn>
                       </div>   
                     </div>
                 </v-card-actions>
@@ -156,7 +154,7 @@
       const app = Vue.createApp({
         data() {
           return {
-            title: "Web/Mobile  Application : เช็คชื่อนักศึกษา และ ถาม/ตอบ",
+            title: "LOGIN PAGE",
             footer: "กรุณา Login ด้วยนะครับบ ",
             students: [],
             editstd: {},
